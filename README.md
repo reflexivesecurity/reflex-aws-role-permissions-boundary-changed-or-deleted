@@ -1,5 +1,9 @@
 # reflex-aws-role-permissions-boundary-changed-or-deleted
-TODO: Write a brief description of your rule and what it does.
+A Reflex Rule for detecting the modification or deletion of an IAM Role permission boundary.
+
+Note: This rule does _not_ detect the modification of permissions of an IAM Policy that is
+actively being used as a permission boundary. It detects when an IAM Policy is attached
+to a Role as a Permissions Boundary, or when a Permissions Boundary is removed from a Role.
 
 ## Usage
 To use this rule either add it to your `reflex.yaml` configuration file:  
