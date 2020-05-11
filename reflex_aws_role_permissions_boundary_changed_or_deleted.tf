@@ -1,5 +1,5 @@
 module "reflex_aws_role_permissions_boundary_changed_or_deleted" {
-  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
+  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.6.0"
   rule_name        = "RolePermissionsBoundaryChangedOrDeleted"
   rule_description = "Rule for detecting the modification or deletion of IAM Role permission boundary."
 
