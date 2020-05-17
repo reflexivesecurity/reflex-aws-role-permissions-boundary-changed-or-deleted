@@ -1,28 +1,7 @@
 module "reflex_aws_role_permissions_boundary_changed_or_deleted" {
-  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
-  rule_name        = "RolePermissionsBoundaryChangedOrDeleted"
-  rule_description = "Rule for detecting the modification or deletion of IAM Role permission boundary."
-
-  event_pattern = <<PATTERN
-{
-  "source": [
-    "aws.iam"
-  ],
-  "detail-type": [
-    "AWS API Call via CloudTrail"
-  ],
-  "detail": {
-    "eventSource": [
-      "iam.amazonaws.com"
-    ],
-    "eventName": [
-      "PutRolePermissionsBoundary",
-      "DeleteRolePermissionsBoundary"
-    ]
-  }
-}
-PATTERN
-
+  source = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/sqs_lambda?ref=v0.6.0"
+  cloudwatch_event_rule_id  = var.cloudwatch_event_rule_id
+  cloudwatch_event_rule_arn = var.cloudwatch_event_rule_arn
   function_name   = "RolePermissionsBoundaryChangedOrDeleted"
   source_code_dir = "${path.module}/source"
   handler         = "reflex_aws_role_permissions_boundary_changed_or_deleted.lambda_handler"
